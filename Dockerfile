@@ -1,11 +1,11 @@
-# Use Windows-based PowerShell Core image
-FROM mcr.microsoft.com/powershell
+# Use a base image with PowerShell
+FROM mcr.microsoft.com/powershell:nanoserver-ltsc2022
 
-# Set working directory in the container
+# Set the working directory inside the container
 WORKDIR /scripts
 
-# Copy the PowerShell script to the container
+# Copy the PowerShell script from the host to the container
 COPY script.ps1 .
 
-# Set the PowerShell script as the entry point
-ENTRYPOINT ["pwsh", "./script.ps1"]
+# Execute the PowerShell script
+CMD ["pwsh", "-File", "script.ps1"]
